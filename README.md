@@ -1,6 +1,6 @@
 # Tappy Plane
 ## Introduction
-Tappy Plane is copy of Flappy Bird data save system using Unity's PlayerPrefs
+Tappy Plane is copy of Flappy Bird
 
 ## Packages used in project
 
