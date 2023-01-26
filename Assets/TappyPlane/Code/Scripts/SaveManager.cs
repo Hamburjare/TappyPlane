@@ -7,6 +7,7 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
     public int highScore;
+    public int userHighScore;
 
     [SerializeField]
     TextMeshProUGUI usernameText;
@@ -16,7 +17,7 @@ public class SaveManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         // else
         // {
@@ -26,23 +27,39 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        usernameText.text = LoginManager.username;
+        usernameText.text = $"{PlayerPrefs.GetString("username")} | KÄYTTÄJÄ";
+    }
+
+    public void SaveUserHighScore(int newScore)
+    {
+        if (newScore >= Score.GetUserHighScore())
+        {
+            userHighScore = newScore;
+            PlayerPrefs.SetInt(PlayerPrefs.GetString("username") + "_HighScore", userHighScore);
+        }
     }
 
     public void SaveHighScore(int newScore)
     {
         if (newScore >= Score.GetHighScore())
+        {
             highScore = newScore;
-        PlayerPrefs.SetInt(LoginManager.username + "_HighScore", highScore);
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
+    }
+
+    public int LoadUserHighScore()
+    {
+        return PlayerPrefs.GetInt(PlayerPrefs.GetString("username") + "_HighScore");
     }
 
     public int LoadHighScore()
     {
-        return PlayerPrefs.GetInt(LoginManager.username + "_HighScore");
+        return PlayerPrefs.GetInt("HighScore");
     }
 
-    public void ResetHighScore()
+    public void ResetUserHighScore()
     {
-        PlayerPrefs.DeleteKey(LoginManager.username + "_HighScore");
+        PlayerPrefs.DeleteKey(PlayerPrefs.GetString("username") + "_HighScore");
     }
 }
