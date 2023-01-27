@@ -12,27 +12,32 @@ public class Score : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI scoreText_;
+
     [SerializeField]
     TextMeshProUGUI highScoreText_;
+
     [SerializeField]
     TextMeshProUGUI userHighScoreText_;
 
-    private void Start() {
+    private void Start()
+    {
         userHighScore = SaveManager.instance.LoadUserHighScore();
         highScore = SaveManager.instance.LoadHighScore();
-    }
 
-    private void Update() {
-        if(scoreText_ != null)
-            scoreText_.text = $"PISTEET | {score.ToString()}";
-
-        if(userHighScoreText_ != null)
+        if (userHighScoreText_ != null)
             userHighScoreText_.text = $"SINUN PARAS | {userHighScore.ToString()}";
 
-        if(highScoreText_ != null)
+        if (highScoreText_ != null)
             highScoreText_.text = $"{highScore.ToString()} | ALLTIME PARAS";
     }
 
+    private void Update()
+    {
+        if (scoreText_ != null)
+            scoreText_.text = $"PISTEET | {score.ToString()}";
+    }
+
     public static int GetUserHighScore() => userHighScore;
+
     public static int GetHighScore() => highScore;
 }
