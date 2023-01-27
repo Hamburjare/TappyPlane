@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
 
     void GameOver()
     {
+        SaveManager.instance.SaveUserHighScore(Score.score);
         SaveManager.instance.SaveHighScore(Score.score);
+        PlayerPrefs.DeleteKey("username");
         Score.score = 0;
 
         SceneManager.LoadScene(0);

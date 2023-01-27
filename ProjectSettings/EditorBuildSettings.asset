@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TappyPlane/Level/Scenes/Levels/LogIn.unity
+    path: Assets/TappyPlane/Level/Scenes/Menu/LogIn.unity
     guid: 636f971ac64517a4b85da31b6aebb978
   - enabled: 1
     path: Assets/TappyPlane/Level/Scenes/Levels/SampleScene.unity

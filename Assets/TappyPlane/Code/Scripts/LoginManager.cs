@@ -14,12 +14,10 @@ public class LoginManager : MonoBehaviour
     [SerializeField]
     TMP_InputField inputField;
 
-    private void Awake() {
-        DontDestroyOnLoad(gameObject);
-    }
 
     public void LoadGame() {
         username = inputField.text;
+        PlayerPrefs.SetString("username", username);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
